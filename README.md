@@ -6,7 +6,7 @@ As an exercise you must implement [Conway's Game of Life](https://en.wikipedia.o
 1. Add a folder with your solution, the folder must have your first and / or last name for example: GarciaValdez.
 1. You must rely on the program we did in class (Program.cs) if you want to run it, it uses SDK 3.0.
 1. You must add additional functionality, for example that automatically advances, that the cells can be modified, that use other ways of being displayed on the screen, etc.
-1.Make a pull-request with your changes.
+1. Make a pull-request with your changes.
 
 # El juego de la vida 
 
