@@ -48,7 +48,7 @@ namespace LopezRoblero
             //Vecina 1 
             if (renglon > 0  && columna > 0)
                 {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
+                  if( tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
                       cuenta++;
                 }
                 //vecina 2
@@ -58,41 +58,18 @@ namespace LopezRoblero
                       cuenta++;
                 }
                 //Vecina 3
-                if (renglon > 0  && columna > 0)
-                {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-                }
+                
                 //vecina 4
-                if (renglon > 0  && columna > 0)
-                {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-                }
+                  
                 //Vecina 5
-                if (renglon > 0  && columna > 0)
-                {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-                }
+                
                 //Vecina 6
-                if (renglon > 0  && columna > 0)
-                {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-                }
+                
+                
                 //Vecina 7
-                if (renglon > 0  && columna > 0)
-                {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-                }
+                                
                 //Vecina 8
-                if (renglon > 0  && columna > 0)
-                {
-                  if(  tablero.grid[renglon-1][columna-1].estado_actual == Estado.viva)
-                      cuenta++;
-                }
+                
                 
               
 
@@ -117,8 +94,12 @@ namespace LopezRoblero
     class Tablero 
     {
         public List<List<Celula >> grid;
+        //
+        public short num_renglones, num_columnas;
         public Tablero(short num_renglones, short num_columnas){
               grid = new List<List<Celula>>(); 
+              this.num_renglones = num_renglones;
+              this.num_columnas = num_columnas;
               for (short i=0; i<= num_renglones-1; i++)
               {
                  grid.Add(new List<Celula>()); 
@@ -144,7 +125,18 @@ namespace LopezRoblero
 
         //Cambia el estado de todas las celdas
 
-
+        // Verificar celula en posicion, devuelve una celula nula si no existe en el tablero
+        public bool posicion_valida(short renglon, short columna) {
+            if((renglon < 0 || renglon > num_renglones) || (columna < 0 || columna > num_columnas)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        //Devuelve el estado de si esta viva o muerta
+        public Estado celula_posicion_estado(short renglon, short columna) {
+            return grid[renglon][columna].estado_actual;
+        }
         public void inserta(Celula c)
         {
                 grid[c.renglon][c.columna] = c;
