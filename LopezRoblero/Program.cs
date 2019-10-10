@@ -46,34 +46,47 @@ namespace LopezRoblero
 
         public short num_vecinas()
         {   short cuenta = 0;
-
+          
           /*1,2,3
             4,x,5
             6,7,8 */
-            // Renglon anterior
-            if(tablero.posicion_valida(renglon-1, columna-1) && tablero.celula_posicion_estado(renglon-1, columna-1) == Estado.viva) {
+
+            // Vecino 1
+            if(tablero.posicion_valida(renglon-1, columna-1) && tablero.celula_posicion_estado(renglon-1, columna-1) == Estado.viva)
+            {
                 cuenta++;
             }
-            if(tablero.posicion_valida(renglon-1, columna) && tablero.celula_posicion_estado(renglon-1, columna) == Estado.viva) {
+            //Vecino 2
+            if(tablero.posicion_valida(renglon-1, columna) && tablero.celula_posicion_estado(renglon-1, columna) == Estado.viva) 
+            {
                 cuenta++;
             }
-            if(tablero.posicion_valida(renglon-1, columna+1) && tablero.celula_posicion_estado(renglon-1, columna+1) == Estado.viva) {
+            //Vecino 3
+            if(tablero.posicion_valida(renglon-1, columna+1) && tablero.celula_posicion_estado(renglon-1, columna+1) == Estado.viva) 
+            {
                 cuenta++;
             }
-            // Renglon actual
-            if(tablero.posicion_valida(renglon, columna-1) && tablero.celula_posicion_estado(renglon, columna-1) == Estado.viva) {
+            // Vecino 4
+            if(tablero.posicion_valida(renglon, columna-1) && tablero.celula_posicion_estado(renglon, columna-1) == Estado.viva) 
+            {
                 cuenta++;
             }
-            if(tablero.posicion_valida(renglon, columna+1) && tablero.celula_posicion_estado(renglon, columna+1) == Estado.viva) {
+            //Vecino 5
+            if(tablero.posicion_valida(renglon, columna+1) && tablero.celula_posicion_estado(renglon, columna+1) == Estado.viva) 
+            {
                 cuenta++;
             }
-            // Renglon siguiente
-            if(tablero.posicion_valida(renglon+1, columna-1) && tablero.celula_posicion_estado(renglon+1, columna-1) == Estado.viva) {
+            // Vecino 6
+            if(tablero.posicion_valida(renglon+1, columna-1) && tablero.celula_posicion_estado(renglon+1, columna-1) == Estado.viva) 
+            {
                 cuenta++;
             }
-            if(tablero.posicion_valida(renglon+1, columna) && tablero.celula_posicion_estado(renglon+1, columna) == Estado.viva) {
+            //Vecino 7
+            if(tablero.posicion_valida(renglon+1, columna) && tablero.celula_posicion_estado(renglon+1, columna) == Estado.viva) 
+            {
                 cuenta++;
             }
+            //Vecino 8
             if(tablero.posicion_valida(renglon+1, columna+1) && tablero.celula_posicion_estado(renglon+1, columna+1) == Estado.viva) {
                 cuenta++;
             }
@@ -93,11 +106,9 @@ namespace LopezRoblero
             
         }
     }
-
     class Tablero 
     {
         public List<List<Celula >> grid;
-        //
         public short num_renglones, num_columnas;
         public Tablero(short num_renglones, short num_columnas){
               grid = new List<List<Celula>>(); 
@@ -111,9 +122,7 @@ namespace LopezRoblero
                     grid[i].Add(new Celula(Estado.vacia, this, i,j));
                  }
               }
-
         }
-
         public void actualiza_estado_todas()
         {
             foreach(List<Celula> renglon in grid)
@@ -124,7 +133,7 @@ namespace LopezRoblero
                 }         
             }                  
         }
-        public void siguiente_turno()
+        public void siguiente_pocision()
         {
             foreach(List<Celula> renglon in grid)
             {
@@ -133,10 +142,7 @@ namespace LopezRoblero
                     c.actualiza_estado();
                 }         
             }                  
-        }        
-
-        //Cambia el estado de todas las celdas
-
+        }      
         // Verificar celula en posicion, devuelve una celula nula si no existe en el tablero
         public bool posicion_valida(int renglon, int columna) {
             if((renglon < 0 || renglon >= num_renglones) || (columna < 0 || columna >= num_columnas)) {
@@ -145,17 +151,14 @@ namespace LopezRoblero
                 return true;
             }
         }
-
         //Devuelve el estado de si esta viva o muerta
         public Estado celula_posicion_estado(int renglon, int columna) {
             return grid[renglon][columna].estado_actual;
         }
-        //
         public void inserta(Celula c)
         {
                 grid[c.renglon][c.columna] = c;
         }
-
         public void print()
         {
             string grafica = "";
@@ -170,8 +173,6 @@ namespace LopezRoblero
             Console.WriteLine(grafica);
         } 
     }
-
-
     class Program
     {
         static void Main(string[] args)
@@ -180,25 +181,31 @@ namespace LopezRoblero
              GoL.inserta( new Celula(Estado.viva,GoL, 3, 1  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3, 2  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3, 3  ) );
-             GoL.print();
+             GoL.inserta( new Celula(Estado.viva,GoL, 5, 1  ) );
+             GoL.inserta( new Celula(Estado.viva,GoL, 5, 3  ) );
+             GoL.inserta( new Celula(Estado.viva,GoL, 6, 3  ) );
+             GoL.inserta( new Celula(Estado.viva,GoL, 7, 4  ) );
+             GoL.inserta( new Celula(Estado.viva,GoL, 8, 2  ) );
+             GoL.inserta( new Celula(Estado.viva,GoL, 8, 3  ) );
+             /*GoL.print();
              GoL.actualiza_estado_todas();
-             GoL.siguiente_turno();
-             GoL.print(); 
-           
-
-             // 10 Turnos
-            /*for(int i = 0; i < 10; i++) {
+             GoL.siguiente_pocision();
+             GoL.print();*/
+             
+              //Funcionalidad 10 Turnos
+            for(int i = 0; i < 10; i++) 
+            {
                 Console.Clear();
                 GoL.print();
                 GoL.actualiza_estado_todas();
-                GoL.siguiente_turno();
-                System.Threading.Thread.Sleep(150);
-            }*/
+                GoL.siguiente_pocision();
 
-             // Actualizar el estado_siguiente de todas las celulas
-             // Actualizar el estado actual con el siguiente
-             // Volver a imprimir
-             // Repetir haciendo una pausa  
+                //Repetir haciendo una pausa  
+                System.Threading.Thread.Sleep(200);
+               
+            }  
         }
     }
 }
+    
+
