@@ -181,13 +181,13 @@ namespace LopezRoblero
              GoL.inserta( new Celula(Estado.viva,GoL, 3, 1  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3, 2  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 3, 3  ) );
-             GoL.inserta( new Celula(Estado.viva,GoL, 5, 1  ) );
+             /*GoL.inserta( new Celula(Estado.viva,GoL, 5, 1  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 5, 3  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 6, 3  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 7, 4  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 8, 2  ) );
              GoL.inserta( new Celula(Estado.viva,GoL, 8, 3  ) );
-             /*GoL.print();
+             GoL.print();
              GoL.actualiza_estado_todas();
              GoL.siguiente_pocision();
              GoL.print();*/
