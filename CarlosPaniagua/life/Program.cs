@@ -136,6 +136,7 @@ namespace life
 
         public void inserta(Celula c)
         {
+            if(c.renglon >= 0 && c.columna >= 0 && c.renglon < num_renglones && c.columna < num_columnas )
             grid[c.renglon][c.columna] = c;
         }
 
